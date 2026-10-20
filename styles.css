@@ -7,6 +7,7 @@
     --accent-blue: #3B82F6;
     --accent-purple: #8B5CF6;
     --neon-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+    --oled-glow: drop-shadow(0 0 16px rgba(0, 229, 255, 0.45));
 }
 
 * {
@@ -520,6 +521,136 @@ main {
 @keyframes livePulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* =========================================================
+   THE PHYSICAL 0.96" OLED MODULE
+   ========================================================= */
+.physical-oled {
+    position: relative;
+    background: #0f131a; /* Dark PCB substrate */
+    border: 1px solid #1f2733;
+    border-radius: 14px;
+    padding: 20px 14px 14px 14px;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+}
+
+/* Corner Mounting Screws */
+.screw {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e2e8f0 0%, #94a3b8 45%, #475569 80%, #1e293b 100%);
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.8),
+        0 1px 2px rgba(0,0,0,0.8);
+}
+.screw::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 1.5px;
+    background: #1e293b;
+    transform: translate(-50%, -50%) rotate(40deg);
+}
+.screw-tl { top: 8px; left: 10px; }
+.screw-tr { top: 8px; right: 10px; }
+.screw-bl { bottom: 8px; left: 10px; }
+.screw-br { bottom: 8px; right: 10px; }
+
+/* Header Pins Silkscreen */
+.pin-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.pin-label {
+    font-family: 'Space Mono', monospace, sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: #fbbf24; /* Gold/yellow silkscreen */
+    letter-spacing: -0.2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    line-height: 1;
+}
+.pin-solder {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fde047 30%, #b45309 90%);
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* OLED Glass Display Container */
+.oled-glass {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 128 / 64;
+    background: #030406; /* Deepest OLED true-black */
+    border-radius: 6px;
+    border: 2px solid #1a202c;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 2px 12px rgba(0, 0, 0, 0.95),
+        0 1px 1px rgba(255, 255, 255, 0.05);
+    cursor: crosshair;
+}
+
+/* Subtle glossy diagonal light sheen over the glass */
+.glass-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.02) 35%, 
+        transparent 55%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* The Active Canvas */
+.oled-canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    display: block;
+    position: relative;
+    z-index: 1;
+    filter: var(--oled-glow);
+    transition: filter 0.2s ease;
+}
+
+.no-glow .oled-canvas {
+    filter: none !important;
+}
+
+/* OLED Bottom Markings */
+.oled-footer-marking {
+    margin-top: 8px;
+    font-family: 'Space Mono', monospace, sans-serif;
+    font-size: 7.5px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 }
 
 .browser-warning i {
