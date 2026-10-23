@@ -100,7 +100,7 @@ class VirtualOLED {
 
     onLongTouch() {
         if (this.animType === 'interactive') {
-            this.state.longTouchTime = performance.now();
+            this.state.shortTapTime = performance.now();
         } else {
             this.startTime = performance.now();
             this.initState();
@@ -121,9 +121,9 @@ class VirtualOLED {
             targetPupilX: 0,
             targetPupilY: 0,
             nextLookTime: performance.now() + 1500,
-            tapReactionTime: 0,
-            shortTapTime: 0,
-            longTouchTime: 0,
+            tapReactionTime: -999999,
+            shortTapTime: -999999,
+            longTouchTime: -999999,
             pupilX: 0,
             pupilY: 0,
             targetPupilX: 0,
@@ -327,14 +327,8 @@ class VirtualOLED {
             }
         }
 
-        // 1. Long Touch (Petting / Cuddle) Reaction
-        if (now - this.state.longTouchTime < 2400) {
-            this.renderPetting(now, this.state.longTouchTime);
-            return;
-        }
-
-        // 2. Short Tap Reaction (Playful Wink + Hop)
-        if (now - this.state.shortTapTime < 1200) {
+        // Tap Reaction (Playful Wink + Hop)
+        if (this.state.shortTapTime > 0 && (now - this.state.shortTapTime < 1200)) {
             const elapsed = now - this.state.shortTapTime;
             const hop = Math.sin((elapsed / 1200) * Math.PI) * 6;
             this.drawMochiDefaultEye(this.RE_LCX, 0, -hop, 0);
@@ -345,7 +339,7 @@ class VirtualOLED {
         }
 
         // 3. Fallback tap reaction
-        if (now - this.state.tapReactionTime < 1800) {
+        if (this.state.tapReactionTime > 0 && (now - this.state.tapReactionTime < 1800)) {
             const bounce = Math.sin((now - this.state.tapReactionTime) * 0.015) * 4;
             this.drawHeartEye(this.RE_LCX, this.RE_EEY - 6 + bounce, this.RE_EH);
             this.drawHeartEye(this.RE_RCX, this.RE_EEY - 6 + bounce, this.RE_EH);

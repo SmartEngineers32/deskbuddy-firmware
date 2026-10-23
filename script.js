@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     const currencySymbol = document.getElementById('currencySymbol');
     const priceAmount = document.getElementById('priceAmount');
+    const priceOriginal = document.getElementById('priceOriginal');
     const buyBtnText = document.getElementById('buyBtnText');
     const smartBuyBtn = document.getElementById('smartBuyBtn');
 
@@ -19,10 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isIndia) {
             if (currencySymbol) currencySymbol.innerText = '₹';
             if (priceAmount) priceAmount.innerText = '79';
+            if (priceOriginal) priceOriginal.innerText = '₹149';
             if (buyBtnText) buyBtnText.innerHTML = 'Get Firmware — ₹79';
         } else {
             if (currencySymbol) currencySymbol.innerText = '$';
             if (priceAmount) priceAmount.innerText = '3';
+            if (priceOriginal) priceOriginal.innerText = '$6';
             if (buyBtnText) buyBtnText.innerHTML = 'Get Firmware — $3 USD';
         }
     }
@@ -67,6 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // -------------------------------------------------------------
+    // 3. License Key Verification & Browser Flasher
+    // -------------------------------------------------------------
+    const verifyBtn = document.getElementById('verifyBtn');
+    const licenseInput = document.getElementById('licenseKey');
+    const statusMsg = document.getElementById('status-msg');
+    const installContainer = document.getElementById('install-container');
+
+    // Official authorized DeskBuddy license keys
+    const VALID_LICENSE_KEYS = [
+        'DB01-8F29-41A7',
+        'DB018F2941A7'
+    ];
+
     // Auto-fill license key if redirected back from checkout with ?key=...
     const urlParams = new URLSearchParams(window.location.search);
     const hashParams = new URLSearchParams(window.location.hash.replace('#install?', ''));
@@ -78,20 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
     }
 
-    // -------------------------------------------------------------
-    // 3. License Key Verification & Browser Flasher
-    // -------------------------------------------------------------
-    const verifyBtn = document.getElementById('verifyBtn');
-    const licenseInput = document.getElementById('licenseKey');
-    const statusMsg = document.getElementById('status-msg');
-    const installContainer = document.getElementById('install-container');
-
     if (verifyBtn && licenseInput) {
         verifyBtn.addEventListener('click', async () => {
-            const key = licenseInput.value.trim();
+            const rawKey = licenseInput.value.trim().toUpperCase();
 
-            if (key === '') {
-                showError("Please enter a license key.");
+            if (rawKey === '') {
+                showError("Please enter your license key.");
                 return;
             }
 
@@ -101,14 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
             verifyBtn.disabled = true;
 
             try {
-                // Simulated validation delay
-                await new Promise(resolve => setTimeout(resolve, 800));
+                // Simulated verification check delay
+                await new Promise(resolve => setTimeout(resolve, 700));
 
-                // Accepts any valid key longer than 5 characters for demo
-                if (key.length > 5) {
+                const cleanKey = rawKey.replace(/[^A-Z0-9]/g, '');
+                const isValid = VALID_LICENSE_KEYS.some(k => k.replace(/[^A-Z0-9]/g, '') === cleanKey);
+
+                if (isValid) {
                     showSuccess();
                 } else {
-                    throw new Error("Invalid or Expired License Key");
+                    throw new Error("Invalid License Key. Please check the key in your Topmate order.");
                 }
             } catch (error) {
                 showError(error.message);
