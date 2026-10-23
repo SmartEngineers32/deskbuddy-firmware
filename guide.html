@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeskBuddy Robot — User Guide &amp; Controls Manual</title>
+    <meta name="description" content="Complete step-by-step user guide for DeskBuddy ESP8266 robot. Learn touch gestures, first-time Wi-Fi clock setup, 6 arcade games, and troubleshooting.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e5ff'><path d='M12 2a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2zm-3 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z'/></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Main and Guide Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="guide.css">
+</head>
+<body class="guide-body">
+    <!-- Ambient glowing backgrounds -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Guide Navigation -->
+    <nav class="guide-nav glass-panel">
+        <div class="guide-nav-left">
+            <a href="index.html" class="back-home-btn">
+                <i data-feather="arrow-left" style="width: 15px; height: 15px;"></i> Back to Flasher
+            </a>
+            <div class="logo">
+                <i data-feather="cpu"></i>
+                <span>DeskBuddy Guide</span>
+            </div>
+        </div>
+        <div class="guide-nav-links">
+            <a href="#gestures">Touch Controls</a>
+            <a href="#wifi-setup">Wi-Fi Clock Setup</a>
+            <a href="#menu-map">Menu Map</a>
+            <a href="#faq">Troubleshooting</a>
+        </div>
+    </nav>
+
+    <!-- Guide Hero -->
+    <header class="guide-hero">
+        <span class="guide-badge"><i data-feather="book-open" style="width: 14px; height: 14px;"></i> User Manual &amp; Controls</span>
+        <h1 class="guide-title">How to Operate Your <span class="gradient-text">DeskBuddy</span></h1>
+        <p class="guide-subtitle">Everything you need to master your robot companion using a single touch sensor. No apps, no coding, zero confusion.</p>
+
+        <!-- Quick Jump Pills -->
+        <div class="guide-quick-pills">
+            <a href="#gestures" class="guide-pill"><i data-feather="hand"></i> Touch Controls</a>
+            <a href="#wifi-setup" class="guide-pill"><i data-feather="wifi"></i> 1st-Time Wi-Fi Setup</a>
+            <a href="#menu-map" class="guide-pill"><i data-feather="grid"></i> All 8 Modes</a>
+            <a href="#faq" class="guide-pill"><i data-feather="help-circle"></i> Quick Troubleshooting</a>
+        </div>
+    </header>
+
+    <div class="guide-container">
+
+        <!-- =========================================================
+             SECTION 1: THE CORE TOUCH GESTURES
+             ========================================================= -->
+        <section class="guide-section" id="gestures">
+            <div class="guide-sec-header">
+                <span class="guide-sec-tag">Control Center</span>
+                <h2 class="guide-sec-title">4 Touch Gestures, Infinite Possibilities</h2>
+                <p class="guide-sec-desc">Your robot uses a single TTP223 capacitive touch sensor. Here is how each tap command works:</p>
+            </div>
+
+            <div class="gestures-grid">
+                <!-- Single Tap -->
+                <div class="gesture-card gesture-card-tap glass-panel">
+                    <div class="gesture-icon-wrap">
+                        <div class="gesture-tap-badge">👆</div>
+                        <span class="gesture-speed-tag">1 Quick Tap</span>
+                    </div>
+                    <h3>Single Tap</h3>
+                    <p class="gesture-main-action">Triggers Fun Robot Reaction &amp; Animations</p>
+                    <ul class="gesture-sub-actions">
+                        <li><strong>In Pet Mode:</strong> Robot blinks, sneezes, reads a book, works out, or plays music (45+ animations!).</li>
+                        <li><strong>In Menus:</strong> Scrolls down to the next menu item.</li>
+                        <li><strong>In Games:</strong> Jump, flap bird, bounce ball, or turn snake.</li>
+                        <li><strong>In Desk Clock:</strong> Returns back to Pet Mode.</li>
+                    </ul>
+                </div>
+
+                <!-- Double Tap -->
+                <div class="gesture-card gesture-card-double glass-panel">
+                    <div class="gesture-icon-wrap">
+                        <div class="gesture-tap-badge">👆👆</div>
+                        <span class="gesture-speed-tag">2 Fast Taps</span>
+                    </div>
+                    <h3>Double Tap</h3>
+                    <p class="gesture-main-action">Instant Desk Clock Jump</p>
+                    <ul class="gesture-sub-actions">
+                        <li><strong>In Pet Mode:</strong> Jumps straight to the live Wi-Fi digital clock &amp; date display.</li>
+                        <li><strong>First-time use:</strong> If Wi-Fi isn't configured yet, double-tap automatically opens Wi-Fi setup!</li>
+                        <li><strong>Fast exit:</strong> Tap once while in clock to jump right back to your cute pet.</li>
+                    </ul>
+                </div>
+
+                <!-- Triple Tap -->
+                <div class="gesture-card gesture-card-triple glass-panel">
+                    <div class="gesture-icon-wrap">
+                        <div class="gesture-tap-badge">👆👆👆</div>
+                        <span class="gesture-speed-tag">3 Fast Taps</span>
+                    </div>
+                    <h3>Triple Tap</h3>
+                    <p class="gesture-main-action">Opens the 8-Item Main Menu</p>
+                    <ul class="gesture-sub-actions">
+                        <li><strong>In Pet Mode:</strong> Immediately opens the scrolling OS menu with cheerful chime.</li>
+                        <li><strong>Access:</strong> Games, Clock, Daily Quotes, Stopwatch, Pomodoro, Sound Mute &amp; Wi-Fi.</li>
+                        <li><strong>Fast resolution:</strong> Double and triple taps are smart-debounced with zero lag.</li>
+                    </ul>
+                </div>
+
+                <!-- Long Press -->
+                <div class="gesture-card gesture-card-hold glass-panel">
+                    <div class="gesture-icon-wrap">
+                        <div class="gesture-tap-badge">⏱️</div>
+                        <span class="gesture-speed-tag">Hold 0.5s</span>
+                    </div>
+                    <h3>Long Press (Hold)</h3>
+                    <p class="gesture-main-action">Cuddle / Select &amp; Enter</p>
+                    <ul class="gesture-sub-actions">
+                        <li><strong>In Pet Mode (Cuddle):</strong> Squints eyes lovingly, hearts float, happy purr sounds!</li>
+                        <li><strong>In Menus (Select):</strong> Enters highlighted item (watch the bottom progress bar fill!).</li>
+                        <li><strong>In Games / Timers:</strong> Long press exits back to the menu.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 2: FIRST-TIME WI-FI CLOCK SETUP
+             ========================================================= -->
+        <section class="guide-section" id="wifi-setup">
+            <div class="guide-sec-header">
+                <span class="guide-sec-tag">Setup Once &bull; Runs Forever</span>
+                <h2 class="guide-sec-title">First-Time Wi-Fi Setup for Desk Clock</h2>
+                <p class="guide-sec-desc">You only need to do this <strong>once</strong>. The robot saves your credentials permanently in internal memory (EEPROM).</p>
+            </div>
+
+            <div class="wifi-setup-card glass-panel">
+                <div class="wifi-callout-banner">
+                    <i data-feather="shield"></i>
+                    <p><strong>Battery &amp; Privacy Safe:</strong> The robot only turns on its Wi-Fi for 3–5 seconds to grab live atomic time via NTP, then turns Wi-Fi completely OFF. Zero radiation, zero lag, and saves power.</p>
+                </div>
+
+                <div class="wifi-steps-timeline">
+                    <!-- Step 1 -->
+                    <div class="wifi-step-item">
+                        <div class="wifi-step-num">1</div>
+                        <h4>Enter Setup Screen</h4>
+                        <p>In Pet Mode, <strong>double-tap</strong> the sensor (or go to Main Menu ➔ <strong>Change WiFi</strong>). The screen shows: <br><span class="code-badge">1. Connect to: "deskBuddy"</span></p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="wifi-step-item">
+                        <div class="wifi-step-num">2</div>
+                        <h4>Connect from Phone / PC</h4>
+                        <p>Open Wi-Fi settings on your phone or laptop and connect to the hotspot named <span class="code-badge">deskBuddy</span> (no password needed).</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="wifi-step-item">
+                        <div class="wifi-step-num">3</div>
+                        <h4>Open Setup Page</h4>
+                        <p>A captive portal will pop up automatically! If it doesn't, simply open your browser and visit: <br><span class="code-badge">192.168.4.1</span></p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="wifi-step-item">
+                        <div class="wifi-step-num">4</div>
+                        <h4>Save &amp; Connect</h4>
+                        <p>Type your <strong>Home 2.4GHz Wi-Fi Name &amp; Password</strong>, then tap <strong>"Save &amp; Connect"</strong>. The robot syncs time and returns to pet mode automatically!</p>
+                    </div>
+                </div>
+
+                <!-- Important Re-power & Sync Troubleshooting Note -->
+                <div class="wifi-troubleshoot-box">
+                    <div class="wifi-troubleshoot-head">
+                        <i data-feather="refresh-cw"></i>
+                        <h4>Important: If Time Sync Fails on First Try</h4>
+                    </div>
+                    <p>After clicking <strong>Save &amp; Connect</strong>, double-tap the sensor in Pet Mode to open the Desk Clock. If the screen shows <em>"Wi-Fi Not Found"</em> or <em>"Time Sync Failed"</em> on your first attempt:</p>
+                    <ol class="wifi-sync-tips-list">
+                        <li><strong>Unplug &amp; Re-plug USB Power:</strong> Disconnect your robot's USB power cable for 2 seconds and plug it back in. This gives the ESP8266 a clean reboot into your home network mode.</li>
+                        <li><strong>Double-Tap to Fetch Time:</strong> Once powered on, double-tap the touch sensor again. The robot will now instantly connect to your Wi-Fi, fetch live atomic time in 3 seconds, and start ticking!</li>
+                        <li><strong>Check Password if it Persists:</strong> If it still cannot connect, your Wi-Fi password may have had a typo. Simply repeat setup by opening <strong>Main Menu ➔ Change Wi-Fi</strong>.</li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 1.75rem; text-align: center; color: #94a3b8; font-size: 0.88rem;">
+                    💡 <em>Tip: If you ever want to cancel Wi-Fi setup without saving, simply <strong>single-tap</strong> the touch sensor to exit safely back to Pet Mode.</em>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 3: COMPLETE MENU MAP (8 MODES)
+             ========================================================= -->
+        <section class="guide-section" id="menu-map">
+            <div class="guide-sec-header">
+                <span class="guide-sec-tag">OS Features</span>
+                <h2 class="guide-sec-title">Complete 8-Item Menu Breakdown</h2>
+                <p class="guide-sec-desc">Triple-tap in Pet Mode to open the menu. Single-tap cycles down; Long-press selects.</p>
+            </div>
+
+            <div class="menu-map-grid">
+                <!-- Item 1: Games -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="play"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>1. Games Menu</h4>
+                            <span class="menu-item-num">#1</span>
+                        </div>
+                        <p>Access 6 retro arcade games: Dino Run, Flappy Bird, Snake, Pong, Breakout &amp; Stacker.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Hold to exit back</span>
+                    </div>
+                </div>
+
+                <!-- Item 2: Desk Clock -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="clock"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>2. Desk Clock</h4>
+                            <span class="menu-item-num">#2</span>
+                        </div>
+                        <p>Aesthetic digital desk clock with auto NTP time sync, date, and live seconds display.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Single tap to exit</span>
+                    </div>
+                </div>
+
+                <!-- Item 3: Quotes -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="message-circle"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>3. Daily Quotes</h4>
+                            <span class="menu-item-num">#3</span>
+                        </div>
+                        <p>100+ fresh motivational and stoic focus thoughts right in front of your desk setup.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Single tap for next quote</span>
+                    </div>
+                </div>
+
+                <!-- Item 4: Stopwatch -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="watch"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>4. Stopwatch</h4>
+                            <span class="menu-item-num">#4</span>
+                        </div>
+                        <p>Accurate 1-touch lap and workout timer with clean millisecond readout.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Tap = Start/Pause | Hold = Reset</span>
+                    </div>
+                </div>
+
+                <!-- Item 5: Pomodoro -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="target"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>5. Pomodoro Focus</h4>
+                            <span class="menu-item-num">#5</span>
+                        </div>
+                        <p>25-minute deep focus intervals with gentle audio notifications for breaks.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Tap = Start/Pause | Hold = Exit</span>
+                    </div>
+                </div>
+
+                <!-- Item 6: Idle Sound Toggle -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="volume-2"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>6. Idle Sound (Mute)</h4>
+                            <span class="menu-item-num">#6</span>
+                        </div>
+                        <p>Long-press toggles between "Yay! Voice back!" and "Shh! Quiet mode" for zero noise while working.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Stays in menu after toggle</span>
+                    </div>
+                </div>
+
+                <!-- Item 7: Change WiFi -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="wifi"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>7. Change Wi-Fi</h4>
+                            <span class="menu-item-num">#7</span>
+                        </div>
+                        <p>Launch the captive portal to switch networks or update Wi-Fi passwords anytime.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Single tap to cancel setup</span>
+                    </div>
+                </div>
+
+                <!-- Item 8: Exit -->
+                <div class="menu-map-card">
+                    <div class="menu-map-icon"><i data-feather="log-out"></i></div>
+                    <div class="menu-map-body">
+                        <div class="menu-map-title-row">
+                            <h4>8. Exit Menu</h4>
+                            <span class="menu-item-num">#8</span>
+                        </div>
+                        <p>Closes the OS menu and immediately wakes up your interactive robot pet.</p>
+                        <span class="menu-exit-hint"><i data-feather="corner-down-left" style="width: 12px; height: 12px;"></i> Returns to Pet Mode</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 4: TROUBLESHOOTING & FAQ ACCORDION
+             ========================================================= -->
+        <section class="guide-section" id="faq">
+            <div class="guide-sec-header">
+                <span class="guide-sec-tag">Help &amp; Troubleshooting</span>
+                <h2 class="guide-sec-title">Frequently Asked Questions</h2>
+                <p class="guide-sec-desc">Got a question or running into an issue? Here are the most common solutions:</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ 0: Wi-Fi First Sync -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>The clock says "Wi-Fi Not Found" or "Time Sync Failed" right after setup?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        This is normal on the very first connection on some home routers. Simply <strong>unplug and re-plug the USB power cable</strong> to reboot your robot cleanly. Once powered on, double-tap the sensor — your robot will immediately connect to your saved Wi-Fi and fetch the exact time!
+                    </div>
+                </div>
+
+                <!-- FAQ 1 -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>How do I silence the robot when studying or on a work call?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Triple-tap to open the Main Menu, scroll down to <strong>Item 6 (Idle Sound)</strong>, and long-press (hold for 0.5s). A card will appear saying <em>"Shh! Quiet mode — Silent in idle!"</em>. The robot will stay 100% silent during all background animations.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>The Wi-Fi setup page didn't pop up automatically on my phone?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Some phones do not automatically launch captive portals. After connecting your phone to the Wi-Fi network named <strong>"deskBuddy"</strong>, open Chrome or Safari and manually type <strong>http://192.168.4.1</strong> into the URL address bar. The setup card will load immediately.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>The touch sensor triggers randomly without me touching it?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        The TTP223 touch sensor is capacitive (senses electromagnetic fields). Make sure the back of the sensor module is not resting directly on metal, laptop chassis, or messy jumper wires. If placing inside a 3D-printed enclosure, ensure the sensor pad is flush against the plastic shell.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>Can I change my Wi-Fi network or password later?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Triple-tap to open the Main Menu, scroll to <strong>Item 7: Change Wi-Fi</strong>, and hold to select. The robot will launch the "deskBuddy" hotspot again so you can enter new credentials.
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <span>How do I exit a game or stopwatch back to the robot?</span>
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Inside any game or timer, a <strong>Long-Press (holding for 0.5 seconds)</strong> exits back to the menu. In Desk Clock mode, a simple <strong>Single Tap</strong> returns you straight to Pet Mode!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer glass-panel" style="margin-top: 4rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i data-feather="cpu"></i>
+                    <span>DeskBuddy Robot</span>
+                </div>
+                <p>An interactive, open-hardware pet companion for your desk.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Web Flasher</a>
+                <a href="index.html#wiring">Wiring Guide</a>
+                <a href="guide.html">User Guide</a>
+                <a href="https://www.instagram.com/smartengineerslab" target="_blank">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 DeskBuddy. Built for makers with ❤️. Need help? DM <a href="https://www.instagram.com/smartengineerslab" target="_blank">@smartengineerslab</a></p>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons & Accordion Script -->
+    <script>
+        feather.replace();
+
+        // FAQ Accordion Interactivity
+        document.querySelectorAll('.faq-question').forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.parentElement;
+                const wasOpen = card.classList.contains('open');
+                
+                // Close all others
+                document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+                
+                // Toggle clicked
+                if (!wasOpen) {
+                    card.classList.add('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
