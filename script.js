@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (boardPinBanner) boardPinBanner.classList.add('switching');
         setTimeout(() => {
             if (pinPortInfo) {
-                pinPortInfo.innerHTML = `<i data-feather="terminal" style="width: 11px; height: 11px;"></i> Port: ${config.port}`;
+                pinPortInfo.innerHTML = `Port: ${config.port}`;
             }
 
             if (pinDetailsText) {
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="ready-board-title">Ready for <strong>${config.name}</strong></span>
                 </div>
                 <esp-web-install-button manifest="${config.manifest}"></esp-web-install-button>
-                <p class="ready-subtext"><i data-feather="terminal" style="width: 10px; height: 10px;"></i> Connect via ${config.port} cable &bull; Click to flash</p>
+                <p class="ready-subtext">Connect via ${config.port} cable &bull; Click to flash</p>
             </div>
         `;
         if (window.feather) feather.replace();
