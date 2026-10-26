@@ -243,13 +243,15 @@ main {
 
 .device-tag {
     font-size: 0.72rem;
-    font-weight: 600;
-    color: #94a3b8;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    padding: 0.2rem 0.6rem;
+    font-weight: 700;
+    color: #00e5ff;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    padding: 0.22rem 0.65rem;
     border-radius: 6px;
     font-family: 'Space Mono', monospace;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
 }
 
 .pricing-badge {
@@ -646,14 +648,18 @@ main {
 }
 
 .popular-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     font-size: 0.62rem;
     font-weight: 800;
     text-transform: uppercase;
     background: linear-gradient(135deg, #f97316, #ef4444);
     color: #ffffff;
-    padding: 0.12rem 0.38rem;
+    padding: 0.12rem 0.45rem;
     border-radius: 4px;
     letter-spacing: 0.04em;
+    line-height: 1;
 }
 
 .board-port-badge {

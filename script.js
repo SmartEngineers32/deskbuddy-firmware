@@ -176,10 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 2. Update Hero Device Badge
-        if (activeDeviceTag) {
-            activeDeviceTag.innerText = config.badge;
-        }
+        // 2. Hero Device Badge remains permanently fixed as "Supports 6+ ESP Boards" 
 
         // 3. Update Live Dynamic Pinout Preview Banner
         if (boardPinBanner) boardPinBanner.classList.add('switching');

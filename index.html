@@ -1,562 +1,1124 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
     <meta http-equiv="Pragma" content="no-cache">
+
     <meta http-equiv="Expires" content="0">
+
     <title>DeskBuddy Robot | 1-Click Browser Firmware Installer</title>
+
     <!-- Modern Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css?v=12">
+
     <!-- Feather Icons -->
+
     <script src="https://unpkg.com/feather-icons"></script>
+
 </head>
+
 <body>
+
     <!-- Background glowing orbs & ambient dynamic canvas -->
+
     <div class="glow-orb orb-1"></div>
+
     <div class="glow-orb orb-2"></div>
+
     <canvas id="ambientParticlesCanvas" class="ambient-canvas"></canvas>
 
+
+
     <!-- Navigation Bar -->
+
     <nav class="navbar glass-panel">
+
         <div class="logo">
+
             <i data-feather="cpu"></i>
+
             <span>DeskBuddy</span>
+
         </div>
+
         <div class="nav-links">
+
             <a href="#wiring">Wiring Guide</a>
+
             <a href="#setup">Setup</a>
+
             <a href="#reels">Reels</a>
+
             <a href="#features">Features</a>
+
             <a href="guide.html" class="nav-highlight"><i data-feather="book-open" style="width: 13px; height: 13px; vertical-align: -1px;"></i> User Guide</a>
+
             <!-- Instagram Link in Navbar -->
+
             <a href="https://www.instagram.com/smartengineerslab" target="_blank" class="nav-instagram-btn">
+
                 <i data-feather="instagram" style="width: 14px; height: 14px; vertical-align: -2px;"></i> @smartengineerslab
+
             </a>
+
         </div>
+
     </nav>
 
+
+
     <main>
+
         <!-- =========================================================
+
              1. HERO SECTION & FIRMWARE INSTALLER
+
              ========================================================= -->
+
         <section class="hero" id="install">
+
             <div class="hero-content">
+
                 <h1 class="gradient-text">Meet Your New Desktop Companion.</h1>
+
                 <p class="subtitle">Unlock the ultimate firmware experience for your desk buddy. Instant 1-click browser flashing with absolutely no coding needed.</p>
+
                 
+
                 <!-- Unified Firmware Card: Price, Features, Payment & Installer -->
+
                 <div class="installer-card glass-panel" id="heroCard">
+
                     <div class="card-header-row">
+
                         <span class="deal-pill"><i data-feather="zap"></i> Special Launch Offer</span>
-                        <span class="device-tag" id="activeDeviceTag">ESP8266 / NodeMCU</span>
+
+                        <span class="device-tag" id="activeDeviceTag">Supports 6+ ESP Boards</span>
+
                     </div>
+
+
 
                     <h2 class="card-title">DeskBuddy Robot Firmware</h2>
+
                     
+
                     <div class="price-box">
+
                         <div class="price-display">
-                            <span class="price-original" id="priceOriginal">₹149</span>
-                            <span class="currency-symbol" id="currencySymbol">₹</span>
+
+                            <span class="price-original" id="priceOriginal">â‚¹149</span>
+
+                            <span class="currency-symbol" id="currencySymbol">â‚¹</span>
+
                             <span class="price-amount" id="priceAmount">79</span>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- Complete Firmware Features Checklist -->
+
                     <ul class="price-features-checklist">
+
                         <li><i data-feather="check"></i> <span><strong>45+ Cute Animations:</strong> Reads, works out, sleeps &amp; blinks</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Interactive Touch &amp; Petting:</strong> Single tap reactions + long touch cuddle</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>6 Retro Games:</strong> Dino Run, Snake, Pong, Breakout &amp; more</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Wi-Fi Smart Desk Clock:</strong> Auto-synced live time on your setup</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Daily Focus Quotes:</strong> 100+ fresh motivational thoughts</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Pomodoro Focus Timer:</strong> 25-min deep-work intervals with chimes</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Dedicated Stopwatch:</strong> Track your workflow with a single touch</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Cute Robot Chirps:</strong> Happy greeting beeps &amp; retro game sounds</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Snappy 60 FPS UI:</strong> Zero-lag instant touch responsiveness</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>1-Click Web Installer:</strong> Direct USB flash, zero coding needed</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Free Lifetime Updates:</strong> All future games, animations &amp; features</span></li>
+
                         <li><i data-feather="check"></i> <span><strong>Build with Confidence:</strong> Need any help? Just DM me on Instagram</span></li>
+
                     </ul>
 
+
+
                     <!-- Buy Action Button -->
+
                     <div class="buy-action-container">
+
                         <button id="smartBuyBtn" class="primary-btn buy-btn pulsing-cta">
+
                             <i data-feather="download-cloud" style="width: 18px; height: 18px;"></i>
-                            <span id="buyBtnText">Get Firmware — ₹79</span>
+
+                            <span id="buyBtnText">Get Firmware â€” â‚¹79</span>
+
                         </button>
+
                         <div class="payment-trust-badges">
+
                             <span><i data-feather="zap"></i> Instant Access</span>
+
                             <span><i data-feather="shield"></i> 100% Secure Checkout</span>
+
                             <span><i data-feather="refresh-cw"></i> Free Future Updates</span>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- Clean Divider -->
+
                     <div class="divider-or"><span>FLASH YOUR FIRMWARE</span></div>
 
+
+
                     <!-- Step 1: Board Selector -->
+
                     <div class="board-selector-wrapper">
+
                         <div class="board-selector-header">
+
                             <label class="board-selector-title"><i data-feather="cpu" style="width: 14px; height: 14px; color: #00e5ff;"></i> Step 1: Select Your Board</label>
+
                             <span class="board-selector-hint">Auto-configures flasher &amp; pinout</span>
+
                         </div>
+
+
 
                         <!-- 4 Interactive Board Cards -->
+
                         <div class="boards-grid" id="boardsGrid">
+
                             <!-- Board 1: NodeMCU ESP8266 (Default) -->
+
                             <div class="board-card active" data-board="esp8266">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-esp8266">ESP8266</span>
+
                                     <span class="board-port-badge">Micro-USB</span>
+
                                 </div>
+
                                 <div class="board-card-name">NodeMCU / D1 Mini</div>
+
                                 <div class="board-card-sub">Classic &bull; Most Affordable</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
+
 
                             <!-- Board 2: ESP32-C3 Super Mini -->
+
                             <div class="board-card" data-board="c3_supermini">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-c3">ESP32-C3</span>
-                                    <span class="popular-tag">🔥 HOT</span>
+
+                                    <span class="popular-tag">&#128293; HOT</span>
+
                                     <span class="board-port-badge">Type-C</span>
+
                                 </div>
+
                                 <div class="board-card-name">C3 Super Mini</div>
+
                                 <div class="board-card-sub">Coin Sized &bull; RISC-V 160MHz</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
+
 
                             <!-- Board 3: Seeed Studio XIAO C3 -->
+
                             <div class="board-card" data-board="xiao_c3">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-c3">XIAO C3</span>
+
                                     <span class="board-port-badge">Type-C</span>
+
                                 </div>
+
                                 <div class="board-card-name">Seeed XIAO C3</div>
+
                                 <div class="board-card-sub">Thumb Sized &bull; Low Power</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
+
 
                             <!-- Board 4: Seeed Studio XIAO S3 -->
+
                             <div class="board-card" data-board="xiao_s3">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-s3">XIAO S3</span>
+
                                     <span class="board-port-badge">Type-C</span>
+
                                 </div>
+
                                 <div class="board-card-name">Seeed XIAO S3</div>
+
                                 <div class="board-card-sub">Thumb Sized &bull; Dual-Core 240M</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
+
 
                             <!-- Board 5: Standard ESP32 (WROOM 30-Pin) -->
+
                             <div class="board-card" data-board="esp32">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-esp32">ESP32 WROOM</span>
+
                                     <span class="board-port-badge">DevKit</span>
+
                                 </div>
+
                                 <div class="board-card-name">Classic ESP32</div>
+
                                 <div class="board-card-sub">Standard Breadboard DevKit</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
+
 
                             <!-- Board 6: NodeMCU ESP32-S3 DevKit -->
+
                             <div class="board-card" data-board="s3_devkit">
+
                                 <div class="board-card-top">
+
                                     <span class="chip-tag chip-s3">ESP32-S3</span>
+
                                     <span class="board-port-badge">Dual Type-C</span>
+
                                 </div>
+
                                 <div class="board-card-name">NodeMCU S3 DevKit</div>
+
                                 <div class="board-card-sub">Full Size &bull; Native USB OTG</div>
+
                                 <div class="board-check-indicator"><i data-feather="check"></i></div>
+
                             </div>
+
                         </div>
+
+
 
                         <!-- Live Dynamic Pinout Preview Banner -->
+
                         <div class="board-pin-banner" id="boardPinBanner">
+
                             <div class="board-pin-header">
+
                                 <span class="pin-active-label"><i data-feather="zap" style="width: 12px; height: 12px;"></i> Active Pinout Configuration:</span>
+
                                 <span class="pin-port-info" id="pinPortInfo"><i data-feather="terminal" style="width: 11px; height: 11px;"></i> Port: Micro-USB</span>
+
                             </div>
+
                             <div class="pin-details-text" id="pinDetailsText">
+
                                 <div class="pin-tokens-row">
+
                                     <span class="pin-pill"><span class="pin-pill-name sda">SDA</span> <span class="pin-pill-val">D2 (GPIO4)</span></span>
+
                                     <span class="pin-pill"><span class="pin-pill-name scl">SCL</span> <span class="pin-pill-val">D1 (GPIO5)</span></span>
+
                                     <span class="pin-pill"><span class="pin-pill-name touch">Touch</span> <span class="pin-pill-val">D5 (GPIO14)</span></span>
+
                                     <span class="pin-pill"><span class="pin-pill-name buzzer">Buzzer</span> <span class="pin-pill-val">D6 (GPIO12)</span></span>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- Web Installer Input Row -->
+
                     <div class="flash-key-section">
+
                         <p class="flash-helper-text">Step 2: Enter license key to flash directly via USB:</p>
+
                         <div class="flash-input-row">
+
                             <div class="input-group">
+
                                 <i data-feather="key"></i>
+
                                 <input type="text" id="licenseKey" placeholder="Paste your license key here..." autocomplete="off">
+
                             </div>
+
                             <div id="install-container">
+
                                 <button id="verifyBtn" class="secondary-btn flash-btn">
+
                                     <i data-feather="cpu" style="width: 14px; height: 14px; vertical-align: -2px;"></i> Install Firmware
+
                                 </button>
+
                             </div>
+
                         </div>
+
                         <div id="status-msg" class="status hidden"></div>
+
                         <p class="browser-warning">
+
                             <i data-feather="info" style="width: 13px; height: 13px;"></i>
+
                             Flashes via USB in Chrome &amp; Edge &bull; Zero coding or software needed
+
                         </p>
+
                     </div>
+
                 </div>
 
+
+
             </div>
+
             
+
             <div class="hero-image">
+
                 <!-- Virtual Physical OLED Display Module -->
+
                 <div class="hero-oled-container glass-panel">
+
                     <div class="hero-oled-header">
+
                         <span class="live-indicator"><span class="pulse-dot"></span> Live OLED Display</span>
+
                     </div>
+
+
 
                     <div class="physical-oled">
+
                         <!-- Screws -->
+
                         <div class="screw screw-tl"></div>
+
                         <div class="screw screw-tr"></div>
+
                         <div class="screw screw-bl"></div>
+
                         <div class="screw screw-br"></div>
 
+
+
                         <!-- Header Pins -->
+
                         <div class="pin-header">
+
                             <div class="pin-label">GND<div class="pin-solder"></div></div>
+
                             <div class="pin-label">VCC<div class="pin-solder"></div></div>
+
                             <div class="pin-label">SCL<div class="pin-solder"></div></div>
+
                             <div class="pin-label">SDA<div class="pin-solder"></div></div>
+
                         </div>
+
+
 
                         <!-- Glass Display -->
+
                         <div class="oled-glass">
+
                             <div class="glass-reflection"></div>
+
                             <canvas class="oled-canvas" id="heroOledCanvas"></canvas>
+
                         </div>
 
-                        <div class="oled-footer-marking">0.96" OLED • 128×64</div>
+
+
+                        <div class="oled-footer-marking">0.96" OLED â€¢ 128×64</div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <!-- =========================================================
+
              2. HARDWARE SCHEMATIC & WIRING GUIDE
+
              ========================================================= -->
+
         <section class="wiring-section" id="wiring">
+
             <div class="section-header">
+
                 <span class="section-badge"><i data-feather="cpu" style="width: 13px; height: 13px;"></i> Plug &amp; Play Setup</span>
+
                 <h2 class="section-title">Hardware Schematic &amp; Wiring</h2>
+
                 <p class="section-subtitle">No soldering required. Connect the 4 components in just 5 minutes using simple jumper wires.</p>
+
             </div>
+
+
 
             <div class="wiring-container">
+
                 <!-- Circuit Diagram Showcase Card -->
+
                 <div class="diagram-card glass-panel">
+
                     <div class="diagram-card-top">
+
                         <div class="diagram-title-group">
+
                             <span class="diagram-badge">Wiring Schematic</span>
+
                             <span class="diagram-subtitle">OLED Display &bull; Touch Sensor &bull; Passive Buzzer</span>
+
                         </div>
+
                         <button class="diagram-zoom-btn" id="openDiagramModalBtn" type="button" title="View Fullscreen">
+
                             <i data-feather="maximize-2" style="width: 14px; height: 14px;"></i>
+
                             <span>Enlarge</span>
+
                         </button>
+
                     </div>
+
+
 
                     <!-- Clean Photo Diagram Display Frame -->
+
                     <div class="diagram-frame" id="diagramFrame">
+
                         <img src="assets/circuit_diagram.png" alt="DeskBuddy Circuit Wiring Diagram" class="diagram-img" id="diagramImg">
+
                         <div class="diagram-overlay-hint">
+
                             <i data-feather="zoom-in" style="width: 15px; height: 15px;"></i> Click to view full resolution
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <!-- =========================================================
+
              3. QUICK 3-STEP SETUP GUIDE
+
              ========================================================= -->
+
         <section class="setup-section" id="setup">
+
             <div class="section-header">
+
                 <span class="section-badge"><i data-feather="check-square" style="width: 13px; height: 13px;"></i> 3-Step Setup</span>
+
                 <h2 class="section-title">How to Install in 60 Seconds</h2>
+
                 <p class="section-subtitle">No Arduino IDE. No library compilation errors. Just plug and click.</p>
+
             </div>
+
+
 
             <div class="steps-grid">
+
                 <div class="step-card glass-panel">
+
                     <div class="step-badge">1</div>
+
                     <h3>Connect the 4 Modules</h3>
+
                     <p>Connect your OLED, touch sensor, and buzzer following the wiring diagram above.</p>
+
                 </div>
 
+
+
                 <div class="step-card glass-panel">
+
                     <div class="step-badge">2</div>
+
                     <h3>Plug into Your Computer</h3>
-                    <p>Connect your ESP8266 using a standard Micro-USB cable and open this web page in Chrome or Edge.</p>
+
+                    <p>Connect your board using a USB data cable (Type-C or Micro-USB) and open this web page in Chrome or Edge.</p>
+
                 </div>
 
+
+
                 <div class="step-card glass-panel">
+
                     <div class="step-badge">3</div>
+
                     <h3>Enter Key &amp; 1-Click Install</h3>
+
                     <p>Paste your key above and hit Install. The browser flashes the complete firmware onto your robot in 30 seconds.</p>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <!-- =========================================================
+
              4. INSTAGRAM REELS SHOWCASE (Real Robot in Action)
+
              ========================================================= -->
+
         <section class="reels-section" id="reels">
+
             <div class="section-header">
+
                 <span class="section-badge"><i data-feather="instagram" style="width: 13px; height: 13px;"></i> Real Hardware Demo</span>
+
                 <h2 class="section-title">See It in Action on Instagram</h2>
+
                 <p class="section-subtitle">Real footage of the robot reacting to touch, playing arcade games, and sitting on a desk.</p>
+
             </div>
+
+
 
             <div class="reels-grid">
+
                 <!-- Reel Card 1 -->
+
                 <div class="reel-card glass-panel">
+
                     <a href="https://www.instagram.com/reel/DehFNFoz1_l/" target="_blank" class="reel-frame" style="text-decoration: none;">
+
                         <img src="assets/reel1.jpg" alt="Keychain Robot Reel" class="reel-thumb-img" loading="lazy" />
+
                         <div class="reel-overlay">
+
                             <div class="reel-play-icon"><i data-feather="play"></i></div>
+
                             <span class="reel-action-text">Watch Reel</span>
+
                         </div>
+
                     </a>
+
                     <div class="reel-desc">
+
                         <h4>Keychain Robot from Scratch</h4>
+
                         <p>Watch the robot running fluid eye animations, Chrome Dino, and Flappy Bird in a miniature keychain format.</p>
+
                         <a href="https://www.instagram.com/reel/DehFNFoz1_l/" target="_blank" class="reel-link">Watch on Instagram <i data-feather="arrow-up-right"></i></a>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Reel Card 2 -->
+
                 <div class="reel-card glass-panel">
+
                     <a href="https://www.instagram.com/reel/DbianQ1zNw0/" target="_blank" class="reel-frame" style="text-decoration: none;">
+
                         <img src="assets/reel2.jpg" alt="Coded Desk Buddy Reel" class="reel-thumb-img" loading="lazy" />
+
                         <div class="reel-overlay">
+
                             <div class="reel-play-icon"><i data-feather="play"></i></div>
+
                             <span class="reel-action-text">Watch Reel</span>
+
                         </div>
+
                     </a>
+
                     <div class="reel-desc">
+
                         <h4>I Coded My Own Desk Buddy</h4>
-                        <p>Inspired by Emo &amp; Eilik — demonstrating interactive emotional reactions, retro arcade games, and expressive audio.</p>
+
+                        <p>Inspired by Emo &amp; Eilik â€” demonstrating interactive emotional reactions, retro arcade games, and expressive audio.</p>
+
                         <a href="https://www.instagram.com/reel/DbianQ1zNw0/" target="_blank" class="reel-link">Watch on Instagram <i data-feather="arrow-up-right"></i></a>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Reel Card 3 -->
+
                 <div class="reel-card glass-panel">
+
                     <a href="https://www.instagram.com/reel/DdJeNNbzdtF/" target="_blank" class="reel-frame" style="text-decoration: none;">
+
                         <img src="assets/reel3.jpg" alt="Building Desk Buddy Reel" class="reel-thumb-img" loading="lazy" />
+
                         <div class="reel-overlay">
+
                             <div class="reel-play-icon"><i data-feather="play"></i></div>
+
                             <span class="reel-action-text">Watch Reel</span>
+
                         </div>
+
                     </a>
+
                     <div class="reel-desc">
+
                         <h4>Building the Desktop Pet</h4>
+
                         <p>Behind the scenes of assembling the pocket hardware, testing touch responsiveness, and bringing the robot to life.</p>
+
                         <a href="https://www.instagram.com/reel/DdJeNNbzdtF/" target="_blank" class="reel-link">Watch on Instagram <i data-feather="arrow-up-right"></i></a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Creator Instagram Banner -->
+
             <div class="instagram-banner glass-panel">
+
                 <div class="ig-banner-left">
+
                     <div class="ig-avatar">
+
                         <i data-feather="instagram"></i>
+
                     </div>
+
                     <div>
+
                         <h3>Follow @smartengineerslab on Instagram</h3>
+
                         <p>For new firmware updates, ESP32-based smart projects, and cool DIY electronics you can make at home.</p>
+
                     </div>
+
                 </div>
+
                 <a href="https://www.instagram.com/smartengineerslab" target="_blank" class="primary-btn ig-btn">
+
                     <i data-feather="instagram" style="width: 16px; height: 16px;"></i> Follow @smartengineerslab
+
                 </a>
+
             </div>
+
         </section>
+
+
 
         <!-- =========================================================
+
              5. THE CORE FEATURES SHOWCASE
+
              ========================================================= -->
+
         <section class="features-showcase" id="features">
+
             <div class="section-header">
+
                 <span class="section-badge"><i data-feather="star" style="width: 13px; height: 13px;"></i> Packed with Personality</span>
+
                 <h2 class="section-title">What Your Robot Can Do</h2>
+
                 <p class="section-subtitle">Packed with interactive emotions, retro arcade gaming, cute robot chirps, and everyday workspace productivity tools.</p>
+
             </div>
+
+
 
             <div class="features-detailed-grid">
+
                 <!-- Feature 1: 45+ Living Animations -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="smile"></i></div>
+
                         <span class="feature-tag">Personality</span>
+
                     </div>
+
                     <h3>45+ Cute Animations</h3>
+
                     <p>Not just a static screen. Your desk buddy reads books, lifts weights, listens to music with bobbing headphones, yawns, and falls asleep when it gets tired.</p>
+
                     <div class="touch-hint-badge">
+
                         <span>👆 Single Tap: 44 Unique Reactions</span>
-                        <span>✋ Long Hold: Petting &amp; Cuddle ❤️</span>
+
+                        <span>âœ‹ Long Hold: Petting &amp; Cuddle â¤ï¸</span>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Feature 2: Touch & Dedicated Long Touch -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="heart"></i></div>
+
                         <span class="feature-tag">Interactivity</span>
+
                     </div>
+
                     <h3>Two-Way Touch &amp; Petting Mode</h3>
-                    <p>Reacts to your physical touch in real-time. Give it a gentle tap to make it hop and trigger random playful quirks. Hold down the sensor to cuddle — watch its eyes squint with happiness as floating love hearts drift up.</p>
+
+                    <p>Reacts to your physical touch in real-time. Give it a gentle tap to make it hop and trigger random playful quirks. Hold down the sensor to cuddle â€” watch its eyes squint with happiness as floating love hearts drift up.</p>
+
                 </div>
+
+
 
                 <!-- Feature 3: 6 Games -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="award"></i></div>
+
                         <span class="feature-tag">Retro Arcade</span>
+
                     </div>
+
                     <h3>6 Built-in Arcade Games</h3>
+
                     <p>Whenever you need a quick 2-minute study or work break, jump straight into classic retro games right on your desk:</p>
+
                     <div class="games-pill-row">
+
                         <span class="game-pill">🦖 Dino Run</span>
-                        <span class="game-pill">🐍 Snake</span>
-                        <span class="game-pill">🏓 Pong</span>
+
+                        <span class="game-pill">ðŸ Snake</span>
+
+                        <span class="game-pill">ðŸ“ Pong</span>
+
                         <span class="game-pill">🧱 Breakout</span>
-                        <span class="game-pill">🐥 Flappy Bird</span>
+
+                        <span class="game-pill">ðŸ¥ Flappy Bird</span>
+
                         <span class="game-pill">📦 Stacker</span>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Feature 4: Clock -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="clock"></i></div>
+
                         <span class="feature-tag">Utility</span>
+
                     </div>
+
                     <h3>Wi-Fi Smart Desk Clock</h3>
-                    <p>More than a pet — it's an aesthetic desk timepiece. Connects to Wi-Fi to sync live time and date automatically, making it an everyday functional essential for your workspace setup.</p>
+
+                    <p>More than a pet â€” it's an aesthetic desk timepiece. Connects to Wi-Fi to sync live time and date automatically, making it an everyday functional essential for your workspace setup.</p>
+
                 </div>
+
+
 
                 <!-- Feature 5: Quotes -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="message-circle"></i></div>
+
                         <span class="feature-tag">Inspiration</span>
+
                     </div>
+
                     <h3>Daily Focus Quotes &amp; Wisdom</h3>
+
                     <p>Over 100+ fresh motivational thoughts and inspiring quotes right in front of you. A quiet dose of encouragement whenever you glance over at your setup.</p>
+
                 </div>
+
+
 
                 <!-- Feature 6: Pomodoro Focus Timer -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="check-circle"></i></div>
+
                         <span class="feature-tag">Productivity</span>
+
                     </div>
+
                     <h3>Pomodoro Focus Timer</h3>
+
                     <p>Supercharge your study sessions or deep-work blocks with structured 25-minute focus intervals followed by 5-minute restorative breaks with gentle chime alerts.</p>
+
                 </div>
+
+
 
                 <!-- Feature 7: Dedicated Stopwatch -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="watch"></i></div>
+
                         <span class="feature-tag">Focus &amp; Flow</span>
+
                     </div>
+
                     <h3>Dedicated Workspace Stopwatch</h3>
+
                     <p>A tactile, real-time timer always in view on your desk. Start, pause, and track your focus sprints and everyday tasks with a single touch.</p>
+
                 </div>
+
+
 
                 <!-- Feature 8: Cute Audio -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="volume-2"></i></div>
+
                         <span class="feature-tag">Sound Design</span>
+
                     </div>
+
                     <h3>Cute Robot Chirps &amp; Sounds</h3>
+
                     <p>Give your robot a voice. Packed with cheerful greeting chirps, retro arcade game bleeps, and gentle acoustic chimes that give your desk companion a real, living personality.</p>
+
                 </div>
+
+
 
                 <!-- Feature 9: Snappy UI -->
+
                 <div class="feature-detailed-card glass-panel">
+
                     <div class="feature-header-bar">
+
                         <div class="feature-icon-box"><i data-feather="zap"></i></div>
+
                         <span class="feature-tag">Performance</span>
+
                     </div>
+
                     <h3>Ultra-Snappy, Zero-Lag UI</h3>
+
                     <p>Engineered from the ground up for instant responsiveness. Every touch and hold registers in milliseconds with fluid 60 FPS graphics, crisp OLED contrast, and zero input delay.</p>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <!-- Circuit Diagram Fullscreen Lightbox Modal -->
+
         <div class="diagram-modal" id="diagramModal">
+
             <div class="diagram-modal-backdrop" id="diagramModalBackdrop"></div>
+
             <div class="diagram-modal-content glass-panel">
+
                 <div class="diagram-modal-header">
+
                     <div class="modal-title-wrap">
+
                         <h3>Circuit Wiring Schematic</h3>
-                        <span class="modal-sub">ESP8266 &bull; 0.96" OLED &bull; Touch Sensor &bull; Passive Buzzer</span>
+
+                        <span class="modal-sub">Pinout Reference &bull; 0.96" OLED &bull; Touch Sensor &bull; Passive Buzzer</span>
+
                     </div>
+
                     <button class="modal-close-btn" id="closeDiagramModalBtn" type="button" aria-label="Close">
+
                         <i data-feather="x"></i>
+
                     </button>
+
                 </div>
+
                 <div class="diagram-modal-body">
+
                     <img src="assets/circuit_diagram.png" alt="Full Resolution Circuit Diagram" class="modal-diagram-img">
+
                 </div>
+
             </div>
+
         </div>
+
     </main>
 
+
+
     <!-- Footer -->
+
     <footer class="site-footer glass-panel">
+
         <div class="footer-content">
+
             <div class="footer-brand">
+
                 <div class="logo">
+
                     <i data-feather="cpu"></i>
+
                     <span>DeskBuddy Robot</span>
+
                 </div>
+
                 <p>An interactive, open-hardware pet companion for your desk.</p>
+
             </div>
+
             <div class="footer-links">
+
                 <a href="#install">Get Firmware</a>
+
                 <a href="#wiring">Wiring Guide</a>
+
                 <a href="guide.html">User Guide &amp; Controls</a>
+
                 <a href="#reels">Watch Reels</a>
+
                 <a href="https://www.instagram.com/smartengineerslab" target="_blank">Instagram</a>
+
             </div>
+
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 DeskBuddy. Built for makers with ❤️. Follow <a href="https://www.instagram.com/smartengineerslab" target="_blank">@smartengineerslab</a></p>
+
+            <p>&copy; 2026 DeskBuddy. Built for makers with â¤ï¸. Follow <a href="https://www.instagram.com/smartengineerslab" target="_blank">@smartengineerslab</a></p>
+
         </div>
+
     </footer>
 
+
+
     <!-- Initialize Icons -->
+
     <script>
+
       feather.replace()
+
     </script>
+
     <!-- Animation Engine & Main Script -->
+
     <script src="anim_engine.js?v=6"></script>
-    <script src="script.js?v=14"></script>
+
+    <script src="script.js?v=15"></script>
+
 </body>
+
 </html>
+
