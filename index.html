@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=12">
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
@@ -53,7 +53,7 @@
                 <div class="installer-card glass-panel" id="heroCard">
                     <div class="card-header-row">
                         <span class="deal-pill"><i data-feather="zap"></i> Special Launch Offer</span>
-                        <span class="device-tag">ESP8266 / NodeMCU</span>
+                        <span class="device-tag" id="activeDeviceTag">ESP8266 / NodeMCU</span>
                     </div>
 
                     <h2 class="card-title">DeskBuddy Robot Firmware</h2>
@@ -96,11 +96,105 @@
                     </div>
 
                     <!-- Clean Divider -->
-                    <div class="divider-or"><span>ALREADY OWN A LICENSE KEY?</span></div>
+                    <div class="divider-or"><span>FLASH YOUR FIRMWARE</span></div>
+
+                    <!-- Step 1: Board Selector -->
+                    <div class="board-selector-wrapper">
+                        <div class="board-selector-header">
+                            <label class="board-selector-title"><i data-feather="cpu" style="width: 14px; height: 14px; color: #00e5ff;"></i> Step 1: Select Your Board</label>
+                            <span class="board-selector-hint">Auto-configures flasher &amp; pinout</span>
+                        </div>
+
+                        <!-- 4 Interactive Board Cards -->
+                        <div class="boards-grid" id="boardsGrid">
+                            <!-- Board 1: NodeMCU ESP8266 (Default) -->
+                            <div class="board-card active" data-board="esp8266">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-esp8266">ESP8266</span>
+                                    <span class="board-port-badge">Micro-USB</span>
+                                </div>
+                                <div class="board-card-name">NodeMCU / D1 Mini</div>
+                                <div class="board-card-sub">Classic &bull; Most Affordable</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+
+                            <!-- Board 2: ESP32-C3 Super Mini -->
+                            <div class="board-card" data-board="c3_supermini">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-c3">ESP32-C3</span>
+                                    <span class="popular-tag">🔥 HOT</span>
+                                    <span class="board-port-badge">Type-C</span>
+                                </div>
+                                <div class="board-card-name">C3 Super Mini</div>
+                                <div class="board-card-sub">Coin Sized &bull; RISC-V 160MHz</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+
+                            <!-- Board 3: Seeed Studio XIAO C3 -->
+                            <div class="board-card" data-board="xiao_c3">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-c3">XIAO C3</span>
+                                    <span class="board-port-badge">Type-C</span>
+                                </div>
+                                <div class="board-card-name">Seeed XIAO C3</div>
+                                <div class="board-card-sub">Thumb Sized &bull; Low Power</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+
+                            <!-- Board 4: Seeed Studio XIAO S3 -->
+                            <div class="board-card" data-board="xiao_s3">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-s3">XIAO S3</span>
+                                    <span class="board-port-badge">Type-C</span>
+                                </div>
+                                <div class="board-card-name">Seeed XIAO S3</div>
+                                <div class="board-card-sub">Thumb Sized &bull; Dual-Core 240M</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+
+                            <!-- Board 5: Standard ESP32 (WROOM 30-Pin) -->
+                            <div class="board-card" data-board="esp32">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-esp32">ESP32 WROOM</span>
+                                    <span class="board-port-badge">DevKit</span>
+                                </div>
+                                <div class="board-card-name">Classic ESP32</div>
+                                <div class="board-card-sub">Standard Breadboard DevKit</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+
+                            <!-- Board 6: NodeMCU ESP32-S3 DevKit -->
+                            <div class="board-card" data-board="s3_devkit">
+                                <div class="board-card-top">
+                                    <span class="chip-tag chip-s3">ESP32-S3</span>
+                                    <span class="board-port-badge">Dual Type-C</span>
+                                </div>
+                                <div class="board-card-name">NodeMCU S3 DevKit</div>
+                                <div class="board-card-sub">Full Size &bull; Native USB OTG</div>
+                                <div class="board-check-indicator"><i data-feather="check"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Live Dynamic Pinout Preview Banner -->
+                        <div class="board-pin-banner" id="boardPinBanner">
+                            <div class="board-pin-header">
+                                <span class="pin-active-label"><i data-feather="zap" style="width: 12px; height: 12px;"></i> Active Pinout Configuration:</span>
+                                <span class="pin-port-info" id="pinPortInfo"><i data-feather="terminal" style="width: 11px; height: 11px;"></i> Port: Micro-USB</span>
+                            </div>
+                            <div class="pin-details-text" id="pinDetailsText">
+                                <div class="pin-tokens-row">
+                                    <span class="pin-pill"><span class="pin-pill-name sda">SDA</span> <span class="pin-pill-val">D2 (GPIO4)</span></span>
+                                    <span class="pin-pill"><span class="pin-pill-name scl">SCL</span> <span class="pin-pill-val">D1 (GPIO5)</span></span>
+                                    <span class="pin-pill"><span class="pin-pill-name touch">Touch</span> <span class="pin-pill-val">D5 (GPIO14)</span></span>
+                                    <span class="pin-pill"><span class="pin-pill-name buzzer">Buzzer</span> <span class="pin-pill-val">D6 (GPIO12)</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Web Installer Input Row -->
                     <div class="flash-key-section">
-                        <p class="flash-helper-text">Enter your license key below to flash your robot directly via USB:</p>
+                        <p class="flash-helper-text">Step 2: Enter license key to flash directly via USB:</p>
                         <div class="flash-input-row">
                             <div class="input-group">
                                 <i data-feather="key"></i>
@@ -171,8 +265,8 @@
                 <div class="diagram-card glass-panel">
                     <div class="diagram-card-top">
                         <div class="diagram-title-group">
-                            <span class="diagram-badge">Wiring Diagram</span>
-                            <span class="diagram-subtitle">ESP8266 &bull; OLED &bull; Touch &bull; Buzzer</span>
+                            <span class="diagram-badge">Wiring Schematic</span>
+                            <span class="diagram-subtitle">OLED Display &bull; Touch Sensor &bull; Passive Buzzer</span>
                         </div>
                         <button class="diagram-zoom-btn" id="openDiagramModalBtn" type="button" title="View Fullscreen">
                             <i data-feather="maximize-2" style="width: 14px; height: 14px;"></i>
@@ -180,94 +274,11 @@
                         </button>
                     </div>
 
-                    <!-- Cropped Diagram Display Frame -->
+                    <!-- Clean Photo Diagram Display Frame -->
                     <div class="diagram-frame" id="diagramFrame">
-                        <img src="assets/circuit_diagram.png" alt="ESP8266 DeskBuddy Circuit Wiring Diagram" class="diagram-img" id="diagramImg">
+                        <img src="assets/circuit_diagram.png" alt="DeskBuddy Circuit Wiring Diagram" class="diagram-img" id="diagramImg">
                         <div class="diagram-overlay-hint">
                             <i data-feather="zoom-in" style="width: 15px; height: 15px;"></i> Click to view full resolution
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Clean Connection Cards -->
-                <div class="connections-panel glass-panel">
-                    <div class="connections-header">
-                        <h3>Simple 4-Step Connection</h3>
-                    </div>
-
-                    <div class="connections-grid">
-                        <!-- OLED Display -->
-                        <div class="connection-item">
-                            <div class="conn-item-header">
-                                <div class="conn-icon icon-display">
-                                    <i data-feather="tv"></i>
-                                </div>
-                                <span class="conn-tag">Display</span>
-                            </div>
-                            <div class="conn-body">
-                                <h4>0.96" OLED Screen</h4>
-                                <p class="conn-desc">Powers the animated face and retro arcade games.</p>
-                                <div class="wire-tags">
-                                    <span class="wire-tag pin-sda"><strong>SDA</strong> &rarr; D2</span>
-                                    <span class="wire-tag pin-scl"><strong>SCL</strong> &rarr; D1</span>
-                                    <span class="wire-tag pin-vcc"><strong>VCC</strong> &rarr; 3.3V</span>
-                                    <span class="wire-tag pin-gnd"><strong>GND</strong> &rarr; G</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Touch Sensor -->
-                        <div class="connection-item">
-                            <div class="conn-item-header">
-                                <div class="conn-icon icon-touch">
-                                    <i data-feather="hand"></i>
-                                </div>
-                                <span class="conn-tag">Interaction</span>
-                            </div>
-                            <div class="conn-body">
-                                <h4>Touch Sensor</h4>
-                                <p class="conn-desc">Taps trigger playful winks; long-press cuddles.</p>
-                                <div class="wire-tags">
-                                    <span class="wire-tag pin-sig"><strong>I/O</strong> &rarr; D5</span>
-                                    <span class="wire-tag pin-vcc"><strong>VCC</strong> &rarr; 3.3V</span>
-                                    <span class="wire-tag pin-gnd"><strong>GND</strong> &rarr; G</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Buzzer -->
-                        <div class="connection-item">
-                            <div class="conn-item-header">
-                                <div class="conn-icon icon-buzzer">
-                                    <i data-feather="volume-2"></i>
-                                </div>
-                                <span class="conn-tag">Audio</span>
-                            </div>
-                            <div class="conn-body">
-                                <h4>Passive Buzzer</h4>
-                                <p class="conn-desc">Plays retro sound effects, chimes, and alarms.</p>
-                                <div class="wire-tags">
-                                    <span class="wire-tag pin-sig"><strong>(+)</strong> &rarr; D6</span>
-                                    <span class="wire-tag pin-gnd"><strong>(-)</strong> &rarr; G</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- USB Power -->
-                        <div class="connection-item">
-                            <div class="conn-item-header">
-                                <div class="conn-icon icon-power">
-                                    <i data-feather="zap"></i>
-                                </div>
-                                <span class="conn-tag">USB</span>
-                            </div>
-                            <div class="conn-body">
-                                <h4>Power Cable</h4>
-                                <p class="conn-desc">Connect any standard Micro-USB cable to power your buddy.</p>
-                                <div class="wire-tags">
-                                    <span class="wire-tag pin-sig"><strong>Micro-USB</strong> &rarr; 5V</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -546,6 +557,6 @@
     </script>
     <!-- Animation Engine & Main Script -->
     <script src="anim_engine.js?v=6"></script>
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=14"></script>
 </body>
 </html>

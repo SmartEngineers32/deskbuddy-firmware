@@ -1,0 +1,15 @@
+{
+  "name": "DeskBuddy Firmware (Seeed Studio XIAO ESP32-S3)",
+  "version": "1.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware_xiao_s3.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

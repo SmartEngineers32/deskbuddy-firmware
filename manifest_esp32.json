@@ -1,0 +1,15 @@
+{
+  "name": "DeskBuddy Firmware (Classic ESP32 WROOM)",
+  "version": "1.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware_esp32.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
