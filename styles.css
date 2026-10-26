@@ -244,14 +244,16 @@ main {
 .device-tag {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #00e5ff;
-    background: rgba(0, 229, 255, 0.08);
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    color: #00f2fe;
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid rgba(0, 242, 254, 0.55);
     padding: 0.22rem 0.65rem;
     border-radius: 6px;
     font-family: 'Space Mono', monospace;
     transition: all 0.2s ease;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.4), inset 0 0 8px rgba(0, 242, 254, 0.15);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.65);
+    letter-spacing: 0.02em;
 }
 
 .pricing-badge {
