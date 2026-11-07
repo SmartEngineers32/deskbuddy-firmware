@@ -1,0 +1,15 @@
+{
+  "name": "DeskBuddy Firmware - 1.3\" OLED (NodeMCU S3 DevKit)",
+  "version": "1.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware_s3_devkit_13.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

@@ -77,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'esp8266': {
             name: 'NodeMCU / D1 Mini',
             chipTag: 'ESP8266',
-            manifest: './manifest.json',
+            manifest_096: './manifest.json',
+            manifest_130: './manifest_13.json',
             port: 'Micro-USB',
             badge: 'ESP8266 / NodeMCU',
             pins: [
@@ -90,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'c3_supermini': {
             name: 'ESP32-C3 Super Mini',
             chipTag: 'ESP32-C3',
-            manifest: './manifest_c3.json',
+            manifest_096: './manifest_c3.json',
+            manifest_130: './manifest_c3_13.json',
             port: 'USB Type-C',
             badge: 'ESP32-C3 Super Mini',
             pins: [
@@ -103,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'xiao_c3': {
             name: 'Seeed Studio XIAO C3',
             chipTag: 'XIAO C3',
-            manifest: './manifest_xiao_c3.json',
+            manifest_096: './manifest_xiao_c3.json',
+            manifest_130: './manifest_xiao_13.json',
             port: 'USB Type-C',
             badge: 'Seeed XIAO ESP32-C3',
             pins: [
@@ -116,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'xiao_s3': {
             name: 'Seeed Studio XIAO S3',
             chipTag: 'XIAO S3',
-            manifest: './manifest_xiao_s3.json',
+            manifest_096: './manifest_xiao_s3.json',
+            manifest_130: './manifest_xiao_s3_13.json',
             port: 'USB Type-C',
             badge: 'Seeed XIAO ESP32-S3',
             pins: [
@@ -129,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'esp32': {
             name: 'Classic ESP32 WROOM',
             chipTag: 'ESP32',
-            manifest: './manifest_esp32.json',
+            manifest_096: './manifest_esp32.json',
+            manifest_130: './manifest_esp32_13.json',
             port: '30/38-Pin DevKit',
             badge: 'Standard ESP32 DevKit',
             pins: [
@@ -142,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         's3_devkit': {
             name: 'NodeMCU ESP32-S3 DevKit',
             chipTag: 'ESP32-S3',
-            manifest: './manifest_s3.json',
+            manifest_096: './manifest_s3.json',
+            manifest_130: './manifest_s3_13.json',
             port: 'Dual USB Type-C',
             badge: 'NodeMCU ESP32-S3 DevKit',
             pins: [
@@ -153,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         }
     };
+
+    let currentSelectedDisplay = '096';
 
     let currentSelectedBoard = 'esp8266';
     let isKeyVerified = false;
@@ -292,18 +300,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderWebInstaller() {
         const config = BOARD_CONFIGS[currentSelectedBoard] || BOARD_CONFIGS['esp8266'];
+        const activeManifest = (currentSelectedDisplay === '130') ? config.manifest_130 : config.manifest_096;
+        const displayLabel = (currentSelectedDisplay === '130') ? '1.3" OLED' : '0.96" OLED';
         installContainer.innerHTML = `
             <div class="installer-ready-card">
                 <div class="ready-badge-row">
                     <span class="ready-status-dot"></span>
-                    <span class="ready-board-title">Ready for <strong>${config.name}</strong></span>
+                    <span class="ready-board-title">Ready for <strong>${config.name}</strong> (${displayLabel})</span>
                 </div>
-                <esp-web-install-button manifest="${config.manifest}"></esp-web-install-button>
+                <esp-web-install-button manifest="${activeManifest}"></esp-web-install-button>
                 <p class="ready-subtext">Connect via ${config.port} cable &bull; Click to flash</p>
             </div>
         `;
         if (window.feather) feather.replace();
     }
+
+    // Display Size Pills listener
+    const displayPills = document.querySelectorAll('.disp-pill');
+    displayPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            const dispKey = pill.getAttribute('data-display');
+            if (!dispKey || dispKey === currentSelectedDisplay) return;
+            currentSelectedDisplay = dispKey;
+            displayPills.forEach(p => p.classList.toggle('active', p === pill));
+            if (isKeyVerified) {
+                renderWebInstaller();
+            }
+        });
+    });
 
     // -------------------------------------------------------------
     // 4. Circuit Diagram Fullscreen Lightbox Modal

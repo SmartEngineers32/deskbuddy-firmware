@@ -1,0 +1,15 @@
+{
+  "name": "DeskBuddy Firmware - 1.3\" OLED (Seeed XIAO S3)",
+  "version": "1.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware_xiao_s3_13.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
