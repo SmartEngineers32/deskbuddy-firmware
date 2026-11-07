@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'ESP8266',
             manifest_096: './manifest.json',
             manifest_130: './manifest_13.json',
-            port: 'Micro-USB',
             badge: 'ESP8266 / NodeMCU',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'D2 (GPIO4)' },
@@ -93,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'ESP32-C3',
             manifest_096: './manifest_c3.json',
             manifest_130: './manifest_c3_13.json',
-            port: 'USB Type-C',
             badge: 'ESP32-C3 Super Mini',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'GPIO8' },
@@ -107,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'XIAO C3',
             manifest_096: './manifest_xiao_c3.json',
             manifest_130: './manifest_xiao_13.json',
-            port: 'USB Type-C',
             badge: 'Seeed XIAO ESP32-C3',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'D4 (SDA)' },
@@ -121,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'XIAO S3',
             manifest_096: './manifest_xiao_s3.json',
             manifest_130: './manifest_xiao_s3_13.json',
-            port: 'USB Type-C',
             badge: 'Seeed XIAO ESP32-S3',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'D4 (SDA)' },
@@ -135,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'ESP32',
             manifest_096: './manifest_esp32.json',
             manifest_130: './manifest_esp32_13.json',
-            port: '30/38-Pin DevKit',
             badge: 'Standard ESP32 DevKit',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'GPIO21' },
@@ -149,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chipTag: 'ESP32-S3',
             manifest_096: './manifest_s3.json',
             manifest_130: './manifest_s3_13.json',
-            port: 'Dual USB Type-C',
             badge: 'NodeMCU ESP32-S3 DevKit',
             pins: [
                 { name: 'sda', label: 'SDA', pin: 'GPIO8' },
@@ -171,6 +165,93 @@ document.addEventListener('DOMContentLoaded', () => {
     const pinDetailsText = document.getElementById('pinDetailsText');
     const activeDeviceTag = document.getElementById('activeDeviceTag');
 
+
+    // -------------------------------------------------------------
+    // Dynamic Circuit Diagram Mapping & Switching
+    // -------------------------------------------------------------
+    const DIAGRAM_MAP = {
+        'esp8266': {
+            key: 'esp8266',
+            src: 'assets/diagram_esp8266.png',
+            badge: 'NodeMCU ESP8266 Wiring',
+            title: 'NodeMCU / D1 Mini (ESP8266) Wiring Schematic'
+        },
+        'c3_supermini': {
+            key: 'c3_supermini',
+            src: 'assets/diagram_c3.png',
+            badge: 'ESP32-C3 Super Mini Wiring',
+            title: 'ESP32-C3 Super Mini Wiring Schematic'
+        },
+        'xiao_c3': {
+            key: 'c3_supermini',
+            src: 'assets/diagram_c3.png',
+            badge: 'ESP32-C3 Wiring (XIAO Compatible)',
+            title: 'ESP32-C3 / Seeed XIAO C3 Wiring Schematic'
+        },
+        'esp32': {
+            key: 'esp32',
+            src: 'assets/diagram_esp32.png',
+            badge: 'Classic ESP32 (30/38-Pin) Wiring',
+            title: 'Classic ESP32 (30/38-Pin) Wiring Schematic'
+        },
+        'xiao_s3': {
+            key: 'esp32',
+            src: 'assets/diagram_esp32.png',
+            badge: 'ESP32 Family Wiring Reference',
+            title: 'ESP32 / Seeed XIAO S3 Wiring Schematic'
+        },
+        's3_devkit': {
+            key: 'esp32',
+            src: 'assets/diagram_esp32.png',
+            badge: 'ESP32 Family Wiring Reference',
+            title: 'ESP32-S3 DevKit Wiring Schematic'
+        }
+    };
+
+    let currentDiagramKey = 'esp8266';
+
+    function switchDiagram(diagKey, animate = true) {
+        const diag = DIAGRAM_MAP[diagKey] || DIAGRAM_MAP['esp8266'];
+        currentDiagramKey = diag.key;
+
+        // Sync pill buttons
+        const diagPills = document.querySelectorAll('.diag-pill');
+        diagPills.forEach(p => {
+            const isMatch = p.getAttribute('data-diag') === diag.key;
+            p.classList.toggle('active', isMatch);
+            p.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+        });
+
+        const diagramImg = document.getElementById('diagramImg');
+        const modalDiagramImg = document.getElementById('modalDiagramImg');
+        const diagramBadge = document.getElementById('diagramBadge');
+        const diagramModalTitle = document.getElementById('diagramModalTitle');
+        const modalDiagramBadge = document.getElementById('modalDiagramBadge');
+        const modalExternalLinkBtn = document.getElementById('modalExternalLinkBtn');
+
+        if (diagramBadge) diagramBadge.innerText = diag.badge;
+        if (diagramModalTitle) diagramModalTitle.innerText = diag.title;
+        if (modalDiagramBadge) modalDiagramBadge.innerText = diag.badge;
+        if (modalExternalLinkBtn) modalExternalLinkBtn.href = diag.src;
+
+        if (diagramImg) {
+            if (animate) {
+                diagramImg.style.opacity = '0.35';
+                diagramImg.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    diagramImg.src = diag.src;
+                    diagramImg.style.opacity = '1';
+                    diagramImg.style.transform = 'scale(1)';
+                }, 100);
+            } else {
+                diagramImg.src = diag.src;
+            }
+        }
+        if (modalDiagramImg) {
+            modalDiagramImg.src = diag.src;
+        }
+    }
+
     function updateBoardUI(boardKey) {
         const config = BOARD_CONFIGS[boardKey] || BOARD_CONFIGS['esp8266'];
         currentSelectedBoard = boardKey;
@@ -190,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (boardPinBanner) boardPinBanner.classList.add('switching');
         setTimeout(() => {
             if (pinPortInfo) {
-                pinPortInfo.innerHTML = `Port: ${config.port}`;
+                pinPortInfo.innerHTML = `<i data-feather="cpu" style="width: 11px; height: 11px;"></i> ${config.name}`;
             }
 
             if (pinDetailsText) {
@@ -211,6 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isKeyVerified) {
             renderWebInstaller();
         }
+
+        // 5. Automatically sync circuit diagram to selected board
+        switchDiagram(boardKey);
     }
 
     // Attach click listeners to all 5 board cards
@@ -309,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="ready-board-title">Ready for <strong>${config.name}</strong> (${displayLabel})</span>
                 </div>
                 <esp-web-install-button manifest="${activeManifest}"></esp-web-install-button>
-                <p class="ready-subtext">Connect via ${config.port} cable &bull; Click to flash</p>
+                <p class="ready-subtext">Connect your board via USB data cable &bull; Click to flash</p>
             </div>
         `;
         if (window.feather) feather.replace();
@@ -329,6 +413,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+    // Diagram Board Selector Pills listener
+    const diagPills = document.querySelectorAll('.diag-pill');
+    diagPills.forEach(pill => {
+        pill.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const diagKey = pill.getAttribute('data-diag');
+            if (diagKey) {
+                switchDiagram(diagKey);
+            }
+        });
+    });
+
     // -------------------------------------------------------------
     // 4. Circuit Diagram Fullscreen Lightbox Modal
     // -------------------------------------------------------------
@@ -340,8 +438,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openDiagramModal() {
         if (diagramModal) {
+            switchDiagram(currentDiagramKey, false);
             diagramModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            if (window.feather) feather.replace();
         }
     }
 

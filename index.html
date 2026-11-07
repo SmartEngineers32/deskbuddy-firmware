@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+&#65279;<!DOCTYPE html>
 
 <html lang="en">
 
@@ -24,7 +24,26 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=21">
+
+    <!-- Open Graph / WhatsApp / Telegram / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smartengineers32.github.io/deskbuddy-firmware/">
+    <meta property="og:title" content="DeskBuddy Robot — Tiny Robot with a Big Personality">
+    <meta property="og:description" content="An interactive desktop pet robot with 45+ expressive animations, 6 retro games, and a smart Wi-Fi desk clock. Flash in 1 click!">
+    <meta property="og:image" content="https://smartengineers32.github.io/deskbuddy-firmware/assets/og_preview.png">
+    <meta property="og:image:secure_url" content="https://smartengineers32.github.io/deskbuddy-firmware/assets/og_preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://smartengineers32.github.io/deskbuddy-firmware/">
+    <meta name="twitter:title" content="DeskBuddy Robot — Tiny Robot with a Big Personality">
+    <meta name="twitter:description" content="An interactive desktop pet robot with 45+ expressive animations, 6 retro games, and a smart Wi-Fi desk clock. Flash in 1 click!">
+    <meta name="twitter:image" content="https://smartengineers32.github.io/deskbuddy-firmware/assets/og_preview.png">
+
 
     <!-- Feather Icons -->
 
@@ -122,9 +141,9 @@
 
                         <div class="price-display">
 
-                            <span class="price-original" id="priceOriginal">â‚¹149</span>
+                            <span class="price-original" id="priceOriginal">&#8377;149</span>
 
-                            <span class="currency-symbol" id="currencySymbol">â‚¹</span>
+                            <span class="currency-symbol" id="currencySymbol">&#8377;</span>
 
                             <span class="price-amount" id="priceAmount">79</span>
 
@@ -174,7 +193,7 @@
 
                             <i data-feather="download-cloud" style="width: 18px; height: 18px;"></i>
 
-                            <span id="buyBtnText">Get Firmware â€” â‚¹79</span>
+                            <span id="buyBtnText">Get Firmware &mdash; &#8377;79</span>
 
                         </button>
 
@@ -224,8 +243,6 @@
 
                                     <span class="chip-tag chip-esp8266">ESP8266</span>
 
-                                    <span class="board-port-badge">Micro-USB</span>
-
                                 </div>
 
                                 <div class="board-card-name">NodeMCU / D1 Mini</div>
@@ -248,8 +265,6 @@
 
                                     <span class="popular-tag">&#128293; HOT</span>
 
-                                    <span class="board-port-badge">Type-C</span>
-
                                 </div>
 
                                 <div class="board-card-name">C3 Super Mini</div>
@@ -269,8 +284,6 @@
                                 <div class="board-card-top">
 
                                     <span class="chip-tag chip-c3">XIAO C3</span>
-
-                                    <span class="board-port-badge">Type-C</span>
 
                                 </div>
 
@@ -292,8 +305,6 @@
 
                                     <span class="chip-tag chip-s3">XIAO S3</span>
 
-                                    <span class="board-port-badge">Type-C</span>
-
                                 </div>
 
                                 <div class="board-card-name">Seeed XIAO S3</div>
@@ -314,8 +325,6 @@
 
                                     <span class="chip-tag chip-esp32">ESP32 WROOM</span>
 
-                                    <span class="board-port-badge">DevKit</span>
-
                                 </div>
 
                                 <div class="board-card-name">Classic ESP32</div>
@@ -335,8 +344,6 @@
                                 <div class="board-card-top">
 
                                     <span class="chip-tag chip-s3">ESP32-S3</span>
-
-                                    <span class="board-port-badge">Dual Type-C</span>
 
                                 </div>
 
@@ -373,7 +380,7 @@
 
                                 <span class="pin-active-label"><i data-feather="zap" style="width: 12px; height: 12px;"></i> Active Pinout Configuration:</span>
 
-                                <span class="pin-port-info" id="pinPortInfo">Port: Micro-USB</span>
+                                <span class="pin-port-info" id="pinPortInfo"><i data-feather="cpu" style="width: 11px; height: 11px;"></i> NodeMCU / D1 Mini (ESP8266)</span>
 
                             </div>
 
@@ -447,7 +454,7 @@
 
             
 
-            <div class="hero-image">
+                        <div class="hero-image" id="heroOledSticky">
 
                 <!-- Virtual Physical OLED Display Module -->
 
@@ -503,7 +510,7 @@
 
 
 
-                        <div class="oled-footer-marking">0.96" OLED â€¢ 128×64</div>
+                        <div class="oled-footer-marking">0.96" OLED &bull; 128&times;64</div>
 
                     </div>
 
@@ -542,23 +549,33 @@
                 <div class="diagram-card glass-panel">
 
                     <div class="diagram-card-top">
-
                         <div class="diagram-title-group">
-
-                            <span class="diagram-badge">Wiring Schematic</span>
-
-                            <span class="diagram-subtitle">OLED Display &bull; Touch Sensor &bull; Passive Buzzer</span>
-
+                            <span class="diagram-badge" id="diagramBadge">NodeMCU ESP8266 Wiring</span>
+                            <span class="diagram-subtitle" id="diagramSubtitle">OLED Display &bull; Touch Sensor &bull; Passive Buzzer</span>
                         </div>
-
                         <button class="diagram-zoom-btn" id="openDiagramModalBtn" type="button" title="View Fullscreen">
-
                             <i data-feather="maximize-2" style="width: 14px; height: 14px;"></i>
-
                             <span>Enlarge</span>
-
                         </button>
+                    </div>
 
+                    <!-- Diagram Board Selector Pills -->
+                    <div class="diagram-pill-row">
+                        <span class="diagram-pill-label">
+                            <i data-feather="cpu" style="width: 13px; height: 13px;"></i>
+                            <span>Board Schematic:</span>
+                        </span>
+                        <div class="diagram-pill-group" role="tablist">
+                            <button type="button" class="diag-pill active" data-diag="esp8266" role="tab" aria-selected="true">
+                                <span>NodeMCU ESP8266</span>
+                            </button>
+                            <button type="button" class="diag-pill" data-diag="c3_supermini" role="tab" aria-selected="false">
+                                <span>ESP32-C3 Super Mini</span>
+                            </button>
+                            <button type="button" class="diag-pill" data-diag="esp32" role="tab" aria-selected="false">
+                                <span>Classic ESP32 (30/38-Pin)</span>
+                            </button>
+                        </div>
                     </div>
 
 
@@ -567,7 +584,7 @@
 
                     <div class="diagram-frame" id="diagramFrame">
 
-                        <img src="assets/circuit_diagram.png" alt="DeskBuddy Circuit Wiring Diagram" class="diagram-img" id="diagramImg">
+                        <img src="assets/diagram_esp8266.png" alt="DeskBuddy Circuit Wiring Diagram" class="diagram-img" id="diagramImg">
 
                         <div class="diagram-overlay-hint">
 
@@ -723,7 +740,7 @@
 
                         <h4>I Coded My Own Desk Buddy</h4>
 
-                        <p>Inspired by Emo &amp; Eilik â€” demonstrating interactive emotional reactions, retro arcade games, and expressive audio.</p>
+                        <p>Inspired by Emo &amp; Eilik &mdash; demonstrating interactive emotional reactions, retro arcade games, and expressive audio.</p>
 
                         <a href="https://www.instagram.com/reel/DbianQ1zNw0/" target="_blank" class="reel-link">Watch on Instagram <i data-feather="arrow-up-right"></i></a>
 
@@ -841,9 +858,9 @@
 
                     <div class="touch-hint-badge">
 
-                        <span>👆 Single Tap: 44 Unique Reactions</span>
+                        <span>&#128070; Single Tap: 44 Unique Reactions</span>
 
-                        <span>âœ‹ Long Hold: Petting &amp; Cuddle â¤ï¸</span>
+                        <span>&#9995; Long Hold: Petting &amp; Cuddle <span style="color:#ef4444;">&#10084;&#65039;</span></span>
 
                     </div>
 
@@ -865,7 +882,7 @@
 
                     <h3>Two-Way Touch &amp; Petting Mode</h3>
 
-                    <p>Reacts to your physical touch in real-time. Give it a gentle tap to make it hop and trigger random playful quirks. Hold down the sensor to cuddle â€” watch its eyes squint with happiness as floating love hearts drift up.</p>
+                    <p>Reacts to your physical touch in real-time. Give it a gentle tap to make it hop and trigger random playful quirks. Hold down the sensor to cuddle &mdash; watch its eyes squint with happiness as floating love hearts drift up.</p>
 
                 </div>
 
@@ -889,17 +906,17 @@
 
                     <div class="games-pill-row">
 
-                        <span class="game-pill">🦖 Dino Run</span>
+                        <span class="game-pill">&#129430; Dino Run</span>
 
-                        <span class="game-pill">ðŸ Snake</span>
+                        <span class="game-pill">&#240;&#376;&#144;&#141; Snake</span>
 
-                        <span class="game-pill">ðŸ“ Pong</span>
+                        <span class="game-pill">&#240;&#376;&#143;&#8220; Pong</span>
 
-                        <span class="game-pill">🧱 Breakout</span>
+                        <span class="game-pill">&#129521; Breakout</span>
 
-                        <span class="game-pill">ðŸ¥ Flappy Bird</span>
+                        <span class="game-pill">&#240;&#376;&#144;&#165; Flappy Bird</span>
 
-                        <span class="game-pill">📦 Stacker</span>
+                        <span class="game-pill">&#128230; Stacker</span>
 
                     </div>
 
@@ -921,7 +938,7 @@
 
                     <h3>Wi-Fi Smart Desk Clock</h3>
 
-                    <p>More than a pet â€” it's an aesthetic desk timepiece. Connects to Wi-Fi to sync live time and date automatically, making it an everyday functional essential for your workspace setup.</p>
+                    <p>More than a pet &mdash; it's an aesthetic desk timepiece. Connects to Wi-Fi to sync live time and date automatically, making it an everyday functional essential for your workspace setup.</p>
 
                 </div>
 
@@ -1031,40 +1048,43 @@
 
 
 
-        <!-- Circuit Diagram Fullscreen Lightbox Modal -->
-
+        <!-- Circuit Diagram True Fullscreen Lightbox Modal -->
         <div class="diagram-modal" id="diagramModal">
-
             <div class="diagram-modal-backdrop" id="diagramModalBackdrop"></div>
-
             <div class="diagram-modal-content glass-panel">
-
                 <div class="diagram-modal-header">
-
                     <div class="modal-title-wrap">
-
-                        <h3>Circuit Wiring Schematic</h3>
-
-                        <span class="modal-sub">Pinout Reference &bull; 0.96" OLED &bull; Touch Sensor &bull; Passive Buzzer</span>
-
+                        <span class="diagram-badge" id="modalDiagramBadge">NodeMCU ESP8266 Wiring</span>
+                        <h3 id="diagramModalTitle">NodeMCU / D1 Mini Wiring Schematic</h3>
                     </div>
 
-                    <button class="modal-close-btn" id="closeDiagramModalBtn" type="button" aria-label="Close">
+                    <!-- In-Modal Diagram Switcher Pills -->
+                    <div class="modal-diag-pills-group" role="tablist">
+                        <button type="button" class="diag-pill active" data-diag="esp8266" role="tab" aria-selected="true">
+                            <span>NodeMCU ESP8266</span>
+                        </button>
+                        <button type="button" class="diag-pill" data-diag="c3_supermini" role="tab" aria-selected="false">
+                            <span>ESP32-C3 Super Mini</span>
+                        </button>
+                        <button type="button" class="diag-pill" data-diag="esp32" role="tab" aria-selected="false">
+                            <span>Classic ESP32</span>
+                        </button>
+                    </div>
 
-                        <i data-feather="x"></i>
-
-                    </button>
-
+                    <div class="modal-header-actions">
+                        <a href="assets/diagram_esp8266.png" target="_blank" class="modal-action-btn" id="modalExternalLinkBtn" title="Open Full-Resolution Image in New Tab">
+                            <i data-feather="external-link" style="width: 14px; height: 14px;"></i>
+                            <span>Open Image</span>
+                        </a>
+                        <button class="modal-close-btn" id="closeDiagramModalBtn" type="button" aria-label="Close Fullscreen">
+                            <i data-feather="x"></i>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="diagram-modal-body">
-
-                    <img src="assets/circuit_diagram.png" alt="Full Resolution Circuit Diagram" class="modal-diagram-img">
-
+                <div class="diagram-modal-body" id="modalBodyZoom">
+                    <img src="assets/diagram_esp8266.png" alt="Full Resolution Circuit Diagram" class="modal-diagram-img" id="modalDiagramImg">
                 </div>
-
             </div>
-
         </div>
 
     </main>
@@ -1087,7 +1107,7 @@
 
                 </div>
 
-                <p>An interactive, open-hardware pet companion for your desk.</p>
+                <p>The tiny robot with a big personality for your desk.</p>
 
             </div>
 
@@ -1109,7 +1129,7 @@
 
         <div class="footer-bottom">
 
-            <p>&copy; 2026 DeskBuddy. Built for makers with â¤ï¸. Follow <a href="https://www.instagram.com/smartengineerslab" target="_blank">@smartengineerslab</a></p>
+            <p>&copy; 2026 DeskBuddy. Built for makers with <span style="color:#ef4444;">&#10084;&#65039;</span>. Follow <a href="https://www.instagram.com/smartengineerslab" target="_blank">@smartengineerslab</a></p>
 
         </div>
 
@@ -1129,7 +1149,7 @@
 
     <script src="anim_engine.js?v=6"></script>
 
-    <script src="script.js?v=14?v=15"></script>
+    <script src="script.js?v=21"></script>
 
 </body>
 
